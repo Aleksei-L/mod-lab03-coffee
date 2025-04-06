@@ -1,17 +1,18 @@
-﻿#include <iostream>
+﻿//"Copyright 2025 Owner"
+#include <iostream>
+#include <string>
+#include <vector>
 #include "Automata.h"
 
-using namespace std;
-
 class Automata {
-private:
+ private:
     int cash;
-    vector<string> menu;
-    vector<int> prices;
+    std::vector<std::string> menu;
+    std::vector<int> prices;
     STATES state;
     int currentDrink;
 
-public:
+ public:
     Automata() {
         state = OFF;
         cash = 0;
@@ -31,27 +32,27 @@ public:
     }
 
     void getMenu() {
-        cout << "Меню:" << endl;
+        std::std::cout << "Меню:" << std::std::endl;
         for (int i = 0; i < menu.size(); i++) {
-            cout << i << ": " << menu[i] << " - " << prices[i] << endl;
+            std::cout << i << ": " << menu[i] << " - " << prices[i] << std::endl;
         }
     }
 
     void on() {
         if (state == OFF) {
             state = WAIT;
-            cout << "Автомат включён" << endl;
+            std::cout << "Автомат включён" << std::endl;
         } else {
-            cout << "Некорректное состояние" << endl;
+            std::cout << "Некорректное состояние" << std::endl;
         }
     }
 
     void off() {
         if (state == WAIT) {
             state = OFF;
-            cout << "Автомат выключен" << endl;
+            std::cout << "Автомат выключен" << std::endl;
         } else {
-            cout << "Некорректное состояние" << endl;
+            std::cout << "Некорректное состояние" << std::endl;
         }
     }
 
@@ -59,68 +60,68 @@ public:
         if (state == WAIT || state == ACCEPT) {
             state = ACCEPT;
             cash += sum;
-            cout << "Вы внесли " << sum << ", текущий баланс: " << cash << endl;
+            std::cout << "Вы внесли " << sum << ", текущий баланс: " << cash << std::endl;
         } else {
-            cout << "Некорректное состояние" << endl;
+            std::cout << "Некорректное состояние" << std::endl;
         }
     }
 
     void cancel() {
         if (state == ACCEPT || state == CHECK) {
-            cout << "Заказ отменён, возврат: " << cash << endl;
+            std::cout << "Заказ отменён, возврат: " << cash << std::endl;
             cash = 0;
             state = WAIT;
         } else {
-            cout << "Некорректное состояние" << endl;
+            std::cout << "Некорректное состояние" << std::endl;
         }
     }
 
     void choice(int drinkIndex) {
         if (state == ACCEPT) {
             if (drinkIndex >= 0 && drinkIndex < menu.size()) {
-                cout << "Вы выбрали: " << menu[drinkIndex] << endl;
+                std::cout << "Вы выбрали: " << menu[drinkIndex] << std::endl;
                 currentDrink = drinkIndex;
                 state = CHECK;
             } else {
-                cout << "Неверный индекс напитка" << endl;
+                std::cout << "Неверный индекс напитка" << std::endl;
             }
         } else {
-            cout << "Некорректное состояние" << endl;
+            std::cout << "Некорректное состояние" << std::endl;
         }
     }
 
     void check() {
         if (state == CHECK) {
             if (cash >= prices[currentDrink]) {
-                cout << "Денег достаточно, начинаем приготовление" << endl;
+                std::cout << "Денег достаточно, начинаем приготовление" << std::endl;
             } else {
-                cout << "Недостаточно денег" << endl;
+                std::cout << "Недостаточно денег" << std::endl;
             }
         } else {
-            cout << "Некорректное состояние" << endl;
+            std::cout << "Некорректное состояние" << std::endl;
         }
     }
 
     void cook() {
         if (state == CHECK) {
             state = COOK;
-            cout << "Приготовление напитка: " << menu[currentDrink] << endl;
+            std::cout << "Приготовление напитка: " << menu[currentDrink] << std::endl;
         } else {
-            cout << "Некорректное состояние" << endl;
+            std::cout << "Некорректное состояние" << std::endl;
         }
     }
 
     void finish() {
         if (state == COOK) {
-            cout << "Напиток готов" << endl;
+            std::cout << "Напиток готов" << std::endl;
             if (cash > prices[currentDrink]) {
-                cout << "Сдача: " << cash - prices[currentDrink] << endl;
+                std::cout << "Сдача: " << cash - prices[currentDrink] << std::endl;
             }
             cash = 0;
             state = WAIT;
             currentDrink = -1;
         } else {
-            cout << "Некорректное состояние" << endl;
+            std::cout << "Некорректное состояние" << std::endl;
         }
     }
 };

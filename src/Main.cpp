@@ -1,4 +1,5 @@
-﻿#include "Automata.h"
+﻿//"Copyright 2025 Owner"
+#include "Automata.h"
 
 int main() {
     Automata automata;

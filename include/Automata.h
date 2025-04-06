@@ -1,5 +1,6 @@
-﻿#ifndef AUTOMATA_H
-#define AUTOMATA_H
+﻿//"Copyright 2025 Owner"
+#ifndef INCLUDE_AUTOMATA_H_
+#define INCLUDE_AUTOMATA_H_
 
 #include <string>
 #include <vector>
@@ -13,14 +14,14 @@ enum STATES {
 };
 
 class Automata {
-private:
+ private:
     int cash;
     std::vector<std::string> menu;
     std::vector<int> prices;
     STATES state;
     int currentDrink;
 
-public:
+ public:
     Automata();
     STATES getState();
     void getMenu();
