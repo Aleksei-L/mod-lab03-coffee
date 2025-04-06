@@ -39,7 +39,7 @@ TEST(task, test5) {
     testing::internal::CaptureStdout();
     automata.choice(0);
     std::string output = testing::internal::GetCapturedStdout();
-    EXPECT_NE(output.find("Вы выбрали : Чай"), std::string::npos);
+    EXPECT_NE(output.find("Вы выбрали: Чай"), std::string::npos);
 }
 
 TEST(task, test6) {
