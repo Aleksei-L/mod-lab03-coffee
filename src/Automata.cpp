@@ -34,7 +34,8 @@ class Automata {
     void getMenu() {
         std::std::cout << "Меню:" << std::std::endl;
         for (int i = 0; i < menu.size(); i++) {
-            std::cout << i << ": " << menu[i] << " - " << prices[i] << std::endl;
+            std::cout << i << ": " << menu[i] 
+                << " - " << prices[i] << std::endl;
         }
     }
 
@@ -60,7 +61,8 @@ class Automata {
         if (state == WAIT || state == ACCEPT) {
             state = ACCEPT;
             cash += sum;
-            std::cout << "Вы внесли " << sum << ", текущий баланс: " << cash << std::endl;
+            std::cout << "Вы внесли " << sum
+                << ", текущий баланс: " << cash << std::endl;
         } else {
             std::cout << "Некорректное состояние" << std::endl;
         }
@@ -93,7 +95,8 @@ class Automata {
     void check() {
         if (state == CHECK) {
             if (cash >= prices[currentDrink]) {
-                std::cout << "Денег достаточно, начинаем приготовление" << std::endl;
+                std::cout <<
+                    "Денег достаточно, начинаем приготовление" << std::endl;
             } else {
                 std::cout << "Недостаточно денег" << std::endl;
             }
@@ -105,7 +108,8 @@ class Automata {
     void cook() {
         if (state == CHECK) {
             state = COOK;
-            std::cout << "Приготовление напитка: " << menu[currentDrink] << std::endl;
+            std::cout << "Приготовление напитка: "
+                << menu[currentDrink] << std::endl;
         } else {
             std::cout << "Некорректное состояние" << std::endl;
         }
@@ -115,7 +119,8 @@ class Automata {
         if (state == COOK) {
             std::cout << "Напиток готов" << std::endl;
             if (cash > prices[currentDrink]) {
-                std::cout << "Сдача: " << cash - prices[currentDrink] << std::endl;
+                std::cout << "Сдача: " <<
+                    cash - prices[currentDrink] << std::endl;
             }
             cash = 0;
             state = WAIT;
