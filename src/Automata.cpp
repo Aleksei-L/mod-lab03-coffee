@@ -32,9 +32,9 @@ class Automata {
     }
 
     void getMenu() {
-        std::std::cout << "Меню:" << std::std::endl;
+        std::cout << "Меню:" << std::endl;
         for (int i = 0; i < menu.size(); i++) {
-            std::cout << i << ": " << menu[i] 
+            std::cout << i << ": " << menu[i]
                 << " - " << prices[i] << std::endl;
         }
     }
